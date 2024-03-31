@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Signup.css';
 
 function Signup() {
@@ -10,50 +10,60 @@ function Signup() {
     confirmPassword: ''
   });
 
+  const [passwordRequirements, setPasswordRequirements] = useState([]);
+
+  const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prevState => ({
       ...prevState,
       [name]: value
     }));
-  };
+  if (name === 'password') {
+    updatePasswordRequirements(value);
+  }
+};
 
-  const handleSubmit = (e) => {
+  const updatePasswordRequirements = (password) => {
+    const requirements = [
+      { text: 'At least 12 characters long', satisfied: password.length >= 12 },
+      { text: 'Contain a combination of upper and lower-case letters', satisfied: /[a-z]/.test(password) && /[A-Z]/.test(password) },
+      { text: 'Contain at least one digit', satisfied: /\d/.test(password) },
+      { text: 'Contain at least one special character', satisfied: /[@$!%*?&]/.test(password) }
+    ];
+    setPasswordRequirements(requirements);
+  };
+  
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (formData.password !== formData.confirmPassword) {
       alert("Passwords do not match. Please try again.");
       return;
     }
-  
-    console.log("Submitting form data:", formData);
-  
-    // Send a POST request to the backend
-    fetch('http://localhost:9002/api/signup', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
-    })
-    .then(response => {
-      if (response.status === 409) {
-        return response.json().then(data => {
-          throw new Error(data.message);
-        });
-      } else if (!response.ok) {
+
+    try {
+      const response = await fetch('http://localhost:9002/api/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (!response.ok) {
         throw new Error('Error signing up. Please try again.');
       }
-      return response.json();
-    })
-    .then(data => {
+
+      const data = await response.json();
       console.log("Signup response:", data);
-      // Navigate to login page after successful signup
+      navigate('/login');
       alert("Signup successful! You can now login with your credentials.");
-    })
-    .catch(error => {
+    } catch (error) {
       console.error("Error signing up:", error.message);
       alert(error.message);
-    });
+    }
   };
   
 
@@ -91,8 +101,17 @@ function Signup() {
             value={formData.password}
             onChange={handleChange}
             placeholder="Enter your password"
-          />
-        </label>
+            />
+            {/* Display password requirements */}
+            <div className="password-requirements">
+
+              <ul>
+                {passwordRequirements.map((requirement, index) => (
+                  <li key={index} className={requirement.satisfied ? 'satisfied' : ''}>{requirement.text}</li>
+                ))}
+              </ul>
+            </div>
+          </label>
         <label className="signup-label">
           Confirm Password:
           <input
