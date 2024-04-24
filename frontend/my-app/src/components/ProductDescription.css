@@ -1,0 +1,287 @@
+
+  .bidder-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  
+  @media (max-width: 991px) {
+    .bidder-list {
+      padding-right: 20px;
+    }
+  }
+  
+  .bidder-item {
+    display: flex;
+    gap: 16px;
+  }
+
+  
+  .bidder-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .bidder-amount {
+    color: #1c120d;
+    font: 500 16px "Work Sans", sans-serif;
+    font-feature-settings: "dlig" on;
+    margin: 0;
+  }
+  
+  .bidder-name {
+    color: #9c6b4a;
+    font: 400 14px "Work Sans", sans-serif;
+    font-feature-settings: "dlig" on;  
+    margin: 0;
+  }
+  
+  .product-details h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  
+  .product-details p {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+  
+  
+  .bid-section input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .bid-section button {
+    padding: 10px 20px;
+    background-color: #1c120d;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .bid-section button:hover {
+    background-color: #9c6b4a;
+  }
+
+  .bidding-list {
+    list-style-type: decimal; /* Display numbers as bullets */
+    padding-left: 0; /* Remove default padding */
+  }
+  
+  .bid-item {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    padding: 5px 0;
+  }
+  
+  .user-id {
+    flex: 1;
+  }
+  
+  .amount {
+    flex: 1;
+    text-align: right;
+  }
+  
+  .time {
+    flex: 2;
+    text-align: right;
+  }
+  
+
+
+.product-image img {
+  width: 500px; /* Make sure the image fills its container */
+  height: 500px; 
+}
+
+.product-details h1 {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.countdown {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.description {
+  margin-top: 20px;
+}
+
+
+.description {
+  margin-top: 20px;
+}
+
+
+.quantity-controls button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-color: #ccc;
+  color: #000;
+  cursor: pointer;
+}
+
+.quantity-display {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.actions {
+  margin-top: 20px;
+}
+
+.actions button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.actions .icon {
+  margin-right: 5px;
+}
+
+
+.report-user-button:hover {
+  background-color: #493f40;
+}
+
+.report-dialog {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Slightly transparent grey background */
+  z-index: 1;
+  overflow: auto;
+}
+
+.report-dialog.open {
+  display: block;
+}
+
+.dialog-content {
+  background-color: #fff;
+  margin: 10% auto; /* Center the dialog box vertically and horizontally */
+  padding: 20px;
+  border-radius: 5px;
+  height: 60%;
+  width: 70%; /* Set width to 70% of the screen */
+  overflow-y: auto; /* Enable vertical scrolling if content exceeds height */
+}
+
+.dialog-content h2 {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.dialog-content .description {
+  margin-top: 20px;
+  font-size: 18px;
+  line-height: 1.5;
+  resize: vertical; /* Allow vertical resizing */
+  min-height: 200px; /* Set minimum height */
+  width: calc(100% - 40px); /* Adjust width to fit within the dialog box */
+  padding: 10px; /* Add padding for better readability */
+}
+
+
+.dialog-content .button-container {
+  margin-top: 20px;
+}
+
+.dialog-content .button-container button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.dialog-content .button-container button:hover {
+  background-color: #615a5a;
+}
+
+.product-description-page {
+  display: flex;
+  flex-direction: row; /* Set flex direction to row */
+  align-items: flex-start; /* Align items to the top */
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-image {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #f0f0f0;
+  padding-top: 50px;
+}
+
+.report-user-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #1c120d;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.bid-section {
+  margin-top: 20px;
+}
+
+.bidding-history {
+  margin-top: 20px;
+}
+
+.bidding-history h2 {
+  margin-bottom: 10px;
+}
+
+.bidding-history .bid-item {
+  margin-bottom: 5px;
+}
+
+.bidding-history .user-name {
+  font-weight: bold;
+}
+
+.auction-ended-message {
+  margin-top: 20px;
+}
+
+.description-right{
+  margin-left: 600px;
+  margin-top: -300px; 
+  width: 50%;
+}
+
+input.bid-input {
+  width: 250px; /* Adjust the width as needed */
+  /* Add any additional styling here */
+}
+

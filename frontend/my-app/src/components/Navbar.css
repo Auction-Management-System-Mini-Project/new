@@ -1,33 +1,45 @@
 /* Navbar.css */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: white;
-    color: black;
-    font-size: 20px;
-    padding: 20px;
-    border-bottom: none;
-  }
-  
-  .navbar .navbar-right {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .navbar .navbar-link {
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-  }
-  
-  .navbar .navbar-left {
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-  }
-  
-  .content {
-    padding: 20px;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black; /* Updated background color */
+  color: white; /* Updated text color */
+  font-size: 20px;
+  padding: 20px;
+  border-bottom: 1px solid #E5E8EB;
+}
+
+.navbar-logo{
+  height: 40px;
+  width: 150px;
+}
+
+.navbar .navbar-right {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar .navbar-link {
+  text-decoration: none;
+  color: white; /* Updated link text color */
+  font-weight: bold;
+}
+
+.navbar .navbar-left {
+  text-decoration: none;
+  color: white; /* Updated left text color */
+  font-weight: bold;
+}
+
+.nbutton-like {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  font-weight: bold;
+  color: white;
+}

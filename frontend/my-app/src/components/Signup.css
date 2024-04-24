@@ -1,48 +1,77 @@
-/* Signup.css */
 .signup-container {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  max-width: 512px;
-  margin: 0 auto;
-  font-size: 16px;
-  color: #0D141C;
-  font-weight: 400;
-  padding: 20px 16px;
+  height: 100vh;
 }
 
-.signup-form {
-  width: 100%;
+/* Inside Signup.css */
+.signup-left {
+  position: relative;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: #000000;
+  color: #ffffff;
 }
 
-.signup-label {
-  display: block;
+.left-content {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  left: 20px;
+  padding: 20px;
+  text-align: center;
+  padding-left: 30px;
+}
+
+.left-content h2 {
+ 
+  font-size: 60px; /* Adjust font size as needed */
   margin-bottom: 10px;
 }
 
-.signup-input {
+.left-content p {
+
+  font-size: 16px;
+}
+
+
+.signup-right {
+  width: 50%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 10%;
+}
+
+.signup-right h2 {
+  font-size: 24px;
+  color: #000000;
+}
+
+.form-group {
   width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+  margin-bottom: 20px;
 }
 
 .signup-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #1A80E5;
-  color: #fff;
+  width: 100%;
+  height: 40px;
+  background-color: #000000;
+  color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
-.signup-login-link {
+.login-link {
   margin-top: 20px;
-  font-size: 14px;
-  color: #4F7396;
 }
 
-.satisfied {
-  color: green;
+.login-link a {
+  color: #060708;
 }

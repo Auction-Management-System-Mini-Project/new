@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+//Create.jsx
 import './Create.css';
-import { AdvancedImage } from '@cloudinary/react';
-import { fill } from '@cloudinary/url-gen/actions/resize';
+import React, { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Cloudinary } from '@cloudinary/url-gen';
 
 const Create = () => {
   const cld = new Cloudinary({ cloud: { cloudName: 'dk3ryoigu' } });
+  const navigate = useNavigate();
 
   const [product, setProduct] = useState({
     name: '',
@@ -16,7 +17,7 @@ const Create = () => {
     image: null,
   });
 
-  const [url, setUrl] = useState(null);
+  const [imageUrl, setUrl] = useState(null);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -31,46 +32,55 @@ const Create = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!url) {
+    
+    
+    if (!imageUrl) {
       console.error('Image is required');
       return;
     }
-
-    const formData = new FormData();
-    formData.append('name', product.name);
-    formData.append('description', product.description);
-    formData.append('startingBid', product.startingBid);
-    formData.append('endTime', product.endTime);
-    formData.append('category', product.category);
-    formData.append('url', url);
-    console.log(url);
+  
+    const requestBody = {
+      name: product.name,
+      description: product.description,
+      startingBid: product.startingBid,
+      endTime:product.endTime, 
+      category: product.category,
+      imageUrl: imageUrl,
+    };
+  
     const token = localStorage.getItem('token');
-    console.log(token)
-    const response = await fetch('http://localhost:9002/api/addBid', {
+  
+    try {
+      const response = await fetch('http://localhost:9002/api/addBid', {
         method: 'POST',
         headers: {
+          'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
-        body: formData,
+        body: JSON.stringify(requestBody),
       });
-console.log(response)
-    if (response.ok) {
-      console.log('Product added successfully!');
-      setProduct({
-        name: '',
-        description: '',
-        startingBid: '',
-        endTime: '',
-        category: '',
-        image: null,
-      });
-      alert('Product added successfully!');
-    } else {
-      console.error('Failed to add product:', response.statusText);
+  
+      if (response.ok) {
+        console.log('Product added successfully!');
+        navigate('/sell');
+
+        setProduct({
+          name: '',
+          description: '',
+          startingBid: '',
+          endTime: '',
+          category: '',
+          image: null,
+        });
+        alert('Product added successfully!');
+      } else {
+        console.error('Failed to add product:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error adding product:', error);
     }
   };
-
+  
   const UploadToCloudinary = (file) => {
     const formData = new FormData();
     formData.append('file', file);
@@ -91,71 +101,97 @@ console.log(response)
   };
 
   return (
-    <div>
-      <h2>Add Product</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Name:</label>
-          <input
-            type="text"
-            name="name"
-            value={product.name}
-            onChange={handleChange}
-            required
-          />
+      <div className="create-container">
+        <div className="create-left">
+          <div className="left-content">
+            <h3>ADD PRODUCT</h3>
+            </div>
         </div>
-        <div>
-          <label>Description:</label>
-          <textarea
-            name="description"
-            value={product.description}
-            onChange={handleChange}
-            required
-          ></textarea>
+        <div className="create-right">
+            <form className="create-form" onSubmit={handleSubmit}>
+            <div className="create-right">
+            <label htmlFor="name">Name:</label>
+            <input
+                className="form-group"
+                type="text"
+                id="name"
+                name="name"
+                value={product.name}
+                onChange={handleChange}
+                required
+              />
+              <label htmlFor="description">Description:</label>
+              <input
+                className="form-group"
+                type="text"
+                id="description"
+                name="description"
+                value={product.description}
+                onChange={handleChange}
+                required
+              ></input>
+              <label htmlFor="startingBid">Starting Bid:</label>
+              <input
+                type="number"
+                id="startingBid"
+                name="startingBid"
+                value={product.startingBid}
+                onChange={handleChange}
+                required
+              />
+              <label htmlFor="endTime">End Time:</label>
+              <input
+                type="datetime-local"
+                id="endTime"
+                name="endTime"
+                value={product.endTime}
+                onChange={handleChange}
+                required
+              />
+              <label htmlFor="category">Category:</label>
+              <select
+                id="category"
+                name="category"
+                value={product.category}
+                onChange={handleChange}
+                required
+              >
+                <option value="">Select a category</option>
+                <option value="Electronics">Electronics</option>
+                <option value="Clothing">Clothing</option>
+                <option value="Books">Books</option>
+                <option value="Home & Garden">Home & Garden</option>
+                <option value="Art">Art</option>
+                {/* Add more options as needed */}
+              </select>
+              <label htmlFor="image">Image:</label>
+              <input
+                type="file"
+                accept="image/*"
+                id="image"
+                name="image"
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <button
+  type="submit"
+  className="create-button"
+  style={{
+    width: '50%',
+    backgroundColor: '#000',
+    color: '#fff',
+  }}
+>
+  Add Product
+</button>
+
+
+</form>
+      </div>
+      <div className="background">
         </div>
-        <div>
-          <label>Starting Bid:</label>
-          <input
-            type="number"
-            name="startingBid"
-            value={product.startingBid}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label>End Time:</label>
-          <input
-            type="datetime-local"
-            name="endTime"
-            value={product.endTime}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Category:</label>
-          <input
-            type="text"
-            name="category"
-            value={product.category}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Image:</label>
-          <input
-            type="file"
-            accept="image/*"
-            name="image"
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit">Add Product</button>
-      </form>
-    </div>
+      </div>
   );
 };
 

@@ -1,27 +1,36 @@
-// Navbar.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
+import logo from '../assets/logo.jpg';
 
-const Navbar = ({ isLoggedIn, handleLogout }) => {
+const Navbar = ({ isLoggedIn, isAdmin, handleLogout }) => {
   return (
     <nav className="navbar">
-      <div className="navbar-left">AuctionEase</div>
+      <div className="navbar-left">
+      <img src={logo} alt="AuctionEase Logo" className="navbar-logo" />
+      </div>
       <div className="navbar-right">
-        <Link to="/" className="navbar-link">Home</Link>
-        <Link to="/products" className="navbar-link">Products</Link>
-        <Link to="/sell" className="navbar-link">Sell</Link>
-        {isLoggedIn ? (
-          // If user is logged in, show Profile and Logout buttons
+       
+        {isLoggedIn && !isAdmin && (
           <>
+             <Link to="/home" className="navbar-link">Home</Link>
+            <Link to="/productdisplay" className="navbar-link">Products</Link>
+            <Link to="/sell" className="navbar-link">Sell</Link>
             <Link to="/profile" className="navbar-link">Profile</Link>
-            <button onClick={handleLogout} className="navbar-link">Logout</button>
+            <button onClick={handleLogout} className="nbutton-like">Logout</button>
           </>
-        ) : (
-          // If user is not logged in, show Signup and Login buttons
+        )}
+        {!isLoggedIn && (
           <>
+             <Link to="/" className="navbar-link">Home</Link>
             <Link to="/signup" className="navbar-link">Signup</Link>
             <Link to="/login" className="navbar-link">Login</Link>
+          </>
+        )}
+        {isAdmin && (
+          <>
+            <Link to="/admin" className="navbar-link">Users</Link>
+            <button onClick={handleLogout} className="nbutton-like">Logout</button>
           </>
         )}
       </div>

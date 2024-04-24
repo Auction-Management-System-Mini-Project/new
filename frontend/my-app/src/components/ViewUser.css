@@ -1,0 +1,124 @@
+.product-auction-container {
+    display: flex;
+    flex-direction: column; /* Change to column to stack elements vertically */
+    justify-content: center; /* Align items vertically in the center */
+    align-items: center; /* Align items horizontally in the center */
+    width: 100%;
+    padding-top: 50px;
+    margin: 0 auto; /* Automatically center the container horizontally */
+  }
+  
+  .add-product-container {
+    margin-bottom: 20px;
+  }
+  
+  .sell-heading {
+    font-size: 40px;
+    margin-bottom: 40px;
+  }
+  
+  .product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  .sell-card {
+    position: relative; /* Make the parent container relative for absolute positioning */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    height: 700px;
+    width: 500px;
+  }
+  
+  .action-buttons {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
+  
+  .action-button {
+    padding: 5px 10px;
+    color: #1f1313;
+    background-color: #e7e5e5;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: auto; /* Pushes the button to the right */
+    margin-right: 5px; /* Optional: Add some space between the button and other elements */
+  }
+  
+  .action-button:hover {
+    background-color: #333;
+  }
+  
+  
+  
+  .product-image {
+    width: 100%;
+    height: 300px; /* Set the desired height */
+    object-fit: cover; /* Ensure the image covers the specified dimensions */
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  .product-details {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .product-name {
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .product-starting-bid,
+  .product-current-bid,
+  .product-end-time {
+    margin: 8px 0;
+  }
+  
+  .add-product-button {
+    padding: 10px 20px; /* Adjust padding as needed */
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 4px; /* Add border-radius for rounded corners */
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  .add-product-button:hover {
+    background-color: #333333;
+  }
+  
+  
+  /* Add to existing styles */
+  .toggle-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    padding-top: 40px;
+  }
+  
+  .toggle-button {
+    padding: 10px 20px;
+    background-color: #ddd;
+    color: #333;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin: 0 5px;
+  }
+  
+  .toggle-button.active {
+    background-color: #000;
+    color: #fff;
+  }
+  
