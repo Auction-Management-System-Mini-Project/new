@@ -1,5 +1,3 @@
-/* ProductDisplay.css */
-
 .product-display {
   display: flex;
   flex-direction: column; /* Change to column to stack elements vertically */
@@ -8,67 +6,57 @@
   width: 100%;
   padding-top: 50px;
   margin: 0 auto;
-  }
-  
-  .product-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 0 20px;
-    justify-content: space-between; /* Distribute cards evenly */
-  }
-  
-  .product-card {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    flex: 0 1 calc(25% - 7.5px); /* Modified width for 4 cards in a row */
-    overflow: hidden;
-    height: 800px;
-    width: 1300px
-  }
-  
-  .product-image {
-    width: 100%;
-    height: 50%; /* Set height to 50% */
-    object-fit: cover; /* Ensure the image covers the specified dimensions */
-    border-bottom: 1px solid #f0f0f0;
-  }
-  
-  
-  .product-details {
-    padding: 16px;
-  }
-  
-  .product-name {
-    font-weight: bold;
-    margin: 0;
-  }
-  
-  .product-category,
-  .product-bid,
-  .product-time {
-    margin: 8px 0;
-  }
-  
-  .visuallyHidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
+}
 
-  .view-product-button{
-    padding: 10px 20px;
-    background-color: #1c120d;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: bold;
-  }
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 6px;
+  justify-content: space-between; /* Distribute cards evenly */
+}
+
+.product-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  flex: 0 1 calc(33.33% - 10px); /* Modified width for 3 cards in a row */
+  overflow: hidden;
+  height: 600px; /* Adjusted height to fit content */
+  margin: 0 30px;
+  width: 600px;
+}
+
+.product-image {
+  width: 100%;
+  height: 50%; /* Set height to 50% */
+  object-fit: cover; /* Ensure the image covers the specified dimensions */
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.product-details {
+  padding: 16px;
+}
+
+.product-name {
+  font-weight: bold;
+  margin: 0;
+}
+
+.product-category,
+.product-bid,
+.product-time {
+  margin: 8px 0;
+}
+
+.view-product-button {
+  padding: 10px 20px;
+  background-color: #1c120d;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: auto; /* Align button to the bottom of the card */
+  width: 100%; /* Make button full width */
+}

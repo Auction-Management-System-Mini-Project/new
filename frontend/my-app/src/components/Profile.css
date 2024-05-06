@@ -34,6 +34,7 @@
   padding: 20px;
   background-color: #333;
   border-right: 1px solid #ddd;
+  height: 1000px;
 }
 
 .product-list {
@@ -80,8 +81,8 @@
   border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  height: 500px;
-  width: 400px;
+  height: 100px;
+  width: 100px;
 }
 
 /* Add these styles to your existing Profile.css file */
@@ -104,21 +105,26 @@
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  flex: 0 1 calc(33.33% - 20px); /* Adjust width for 3 cards in a row */
-  margin-bottom: 20px; /* Add margin to separate rows */
+  margin-bottom: 20px; /* Add margin to separate cards */
   overflow: hidden;
-  height: 200px; /* Adjust height as needed */
-  width: 200px; /* Adjust width as needed */
-  margin-right: 10px; /* Add margin between cards */
+  max-width: 200px; /* Set maximum width */
+}
+
+.product-details {
+  padding: 10px;
+}
+
+.product-details p {
+  margin: 5px 0;
 }
 
 .product-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  padding: 0 20px;
-  justify-content:left; /* Align cards to the start of the row */
+  justify-content: flex-start; /* Align cards to the start of the row */
 }
+
 
 
 .product-card img {

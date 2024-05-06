@@ -1,0 +1,28 @@
+version: '3'
+volumes:
+  app:
+    driver: local
+services:
+  frontend:
+    build: ./frontend/my-app
+    network_mode: host
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    volumes:
+      - app:/usr/src/app
+      - /usr/src/app/node_modules
+  backend:
+    build: ./backend
+    network_mode: host
+    ports:
+      - "9002:9002"
+    environment:
+      - PORT=9002
+      - MONGODB_URI=mongodb+srv://annmarywilson293:TbeQEJ2MVGPIc0DY@cluster0.iggvkd2.mongodb.net/?retryWrites=true&w=majority
+      - JWT_SECRET=annmarywilson293
+      - CLOUDINARY_URL=cloudinary://558444457372669:yFYHAaS6HTJL6SwhxElLW7rOPPs@dk3ryoigu
+    volumes:
+      - app:/usr/src/app
+      - /usr/src/app/node_modules

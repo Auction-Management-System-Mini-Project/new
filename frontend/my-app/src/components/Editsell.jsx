@@ -11,7 +11,7 @@ const EditSell = () => {
     name: '',
     description: '',
     startingBid: '',
-    endTime: '', // Update this line
+    endTime: '',
     category: '',
     imageUrl: '',
   });
@@ -34,7 +34,7 @@ const EditSell = () => {
           name,
           description,
           startingBid,
-          endTime: formattedEndTime, // Set the formatted date
+          endTime: formattedEndTime,
           category,
           imageUrl,
         });
@@ -91,48 +91,60 @@ const EditSell = () => {
   };
   
   return (
-    <div className="edit-sell-container">
-      <h1 className="edit-sell-heading">Edit Product</h1>
-      <div className="image-container">
-        {product.imageUrl && <img className="current-image" src={product.imageUrl} alt="Product" />}
+    <div className="edit-container">
+      <div className="edit-left">
+        <div className="edit-left-content">
+          <h3>EDIT PRODUCT</h3>
+        </div>
       </div>
-      <div className="form-container">
-        <form className="create-form" onSubmit={handleSubmit}>
-          <div>
+      <div className="edit-right">
+        <form className="edit-form" onSubmit={handleSubmit}>
+          <div className="edit-form-group">
             <label htmlFor="name">Name:</label>
-            <input type="text" name="name" id="name" value={product.name} onChange={handleChange} required />
+            <input type="text" id="name" name="name" class="edit-input" value={product.name} onChange={handleChange} required />
           </div>
-          <div>
+          <div className="edit-form-group">
             <label htmlFor="description">Description:</label>
-            <textarea id="description" name="description" value={product.description} onChange={handleChange} required />
+            <textarea id="description" name="description" class="edit-input"  value={product.description} onChange={handleChange} required />
           </div>
-          <div>
+          <div className="edit-form-group">
             <label htmlFor="startingBid">Starting Bid:</label>
-            <input type="number" id="startingBid" name="startingBid" value={product.startingBid} onChange={handleChange} required />
+            <input type="number" id="startingBid" name="startingBid" class="edit-input" value={product.startingBid} onChange={handleChange} required />
           </div>
-          <div>
+          <div className="edit-form-group">
             <label htmlFor="endTime">End Time:</label>
-            <input type="datetime-local" id="endTime" name="endTime" value={product.endTime} onChange={handleChange} required />
+            <input type="datetime-local" id="endTime" name="endTime" class="edit-input"  value={product.endTime} onChange={handleChange} required />
           </div>
-          <div>
+          <div className="edit-form-group">
             <label htmlFor="category">Category:</label>
-            <select name="category" id="category" value={product.category} onChange={handleChange} required>
+            <select id="category" name="category" class="edit-input"  value={product.category} onChange={handleChange} required>
+              <option value="">Select a category</option>
               <option value="Electronics">Electronics</option>
               <option value="Clothing">Clothing</option>
               <option value="Books">Books</option>
               <option value="Home & Garden">Home & Garden</option>
+              <option value="Art">Art</option>
+              {/* Add more options as needed */}
             </select>
           </div>
-          <div>
-            <label>New Image:</label>
+          <div className="edit-form-group">
+            <label htmlFor="image" > New Image:</label>
             <input type="file" accept="image/*" id="image" name="image" onChange={(e) => setProduct({ ...product, imageUrl: e.target.files[0] })} />
           </div>
-          <button className="b" type="submit">Save Changes</button>
-          <button className="b" type="button" onClick={handleCancel}>Cancel</button> {/* Add Cancel button */}
+          <div className="edit-button-container">
+            <button type="submit" className="edit-button save" onClick={handleSubmit}>Save</button>
+            <button type="button" className="edit-button cancel" onClick={handleCancel}>Cancel</button>
+          </div>
+
         </form>
       </div>
+      {product.imageUrl && (
+        <div className="image-container">
+          <img className="current-image" src={product.imageUrl} alt="Product" />
+        </div>
+      )}
     </div>
   );
-};
+}
 
 export default EditSell;

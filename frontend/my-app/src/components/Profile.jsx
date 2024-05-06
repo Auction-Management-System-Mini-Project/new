@@ -173,6 +173,8 @@ const handleProductTypeClick = async (productType) => {
 
                 <div className="product-list">
                     {selectedProductType === 'bidded' && biddedProducts.length > 0 && (
+                        <div>
+                        <h2>Bidded Products</h2>
                         <div className="product-grid">
                             {biddedProducts.map((product) => (
                                 <div key={product.id} className="product-card">
@@ -186,8 +188,11 @@ const handleProductTypeClick = async (productType) => {
                                 </div>
                             ))}
                         </div>
+                        </div>
                     )}
                     {selectedProductType === 'winning' && winningBiddedProducts.length > 0 && (
+                        <div>
+                        <h2>Winning Bidded Products</h2>
                         <div className="product-grid">
                             {winningBiddedProducts.map((product) => (
                                 <div key={product.id} className="product-card">
@@ -200,6 +205,7 @@ const handleProductTypeClick = async (productType) => {
                                     </div>
                                 </div>
                             ))}
+                        </div>
                         </div>
                     )}
                 </div>

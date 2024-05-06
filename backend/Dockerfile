@@ -13,8 +13,10 @@ RUN npm install
 # Copy the rest of the application code
 COPY . .
 
+
 # Expose the port the app runs on
 EXPOSE 9002
 
+
 # Start the application
-CMD ["npm", "start"]
+CMD ["npm", "start" ]

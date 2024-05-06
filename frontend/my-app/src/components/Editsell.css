@@ -1,67 +1,94 @@
-.edit-sell-container {
-    width: 75%;
-    margin: 80px auto 0;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .edit-sell-heading {
-    font-size: 24px;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .image-container {
-    margin-bottom: 20px;
-  }
-  
-  .current-image {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-  }
-  
-  .form-container {
-    width: 100%;
-  }
-  
-  .create-form label {
-    display: block;
-    font-size: 16px;
-    margin-bottom: 5px;
-  }
-  
-  .create-form input,
-  .create-form textarea,
-  .create-form select {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-  
-  .create-form button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .create-form button:hover {
-    background-color: #0056b3;
-  }
-  .b{
-    background-color: black;
-    padding-top: 10px;
-  }
-  
+.edit-container {
+  display: flex;
+  height: 100vh;
+}
+
+.edit-left {
+  width: 30%;
+  background-color: #000000;
+  color: #ffffff;
+  display: flex;
+  height: 1000px;
+  padding-top: 120px;
+  padding-left: 50px;
+}
+
+.edit-left-content {
+  padding: 40px;
+  text-align: center;
+}
+
+.edit-left-content h3 {
+  font-size: 32px;
+}
+
+.edit-right {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.edit-form-group {
+  margin-bottom: 20px;
+  width:500px;
+  margin-left: 60px;
+}
+
+.edit-form-group label {
+  font-size: 18px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.edit-input {
+  width: 500px;
+  height: 40px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.edit-input::placeholder {
+  color: #aaa;
+  width: 500px; /* Increase width of placeholders */
+}
+
+.edit-button-container {
+  display: flex;
+  justify-content: center; /* Align buttons to the center */
+  margin-top: 20px; /* Add margin to separate buttons from form inputs */
+}
+
+.edit-button {
+  width: auto; /* Let the button size adjust based on content */
+  height: 40px;
+  color: white;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 0 10px; /* Add margin between buttons */
+  /* Add background color and hover effect */
+  background-color: #0e0e0e;
+  transition: background-color 0.3s;
+}
+
+.edit-button.cancel {
+  background-color: #020303; /* Change background color for cancel button */
+}
+
+.edit-button:hover {
+  background-color: #32363a; /* Change background color on hover */
+}
+
+.current-image {
+  width: 300px; /* Standardize image width */
+  height: 300px; /* Maintain aspect ratio */
+  margin-top: 20px; /* Add margin for spacing */
+}
+
+.edit-button.save {
+  margin-right: 60px; /* Adjust margin for "Save" button */
+  margin-left: 60px; /* Adjust margin for "Cancel" button */
+}
